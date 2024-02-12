@@ -3,7 +3,7 @@ name: Release Obsidian plugin
 on:
   push:
     tags:
-      - "*"
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build:
@@ -30,16 +30,16 @@ jobs:
         run: |
           rm build/manifest.json
           sed -e "s/#VERSION#/$VERSION/g" public/manifest.json > build/manifest.json
+
       # Create the release on github
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{ github.ref }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
       # Upload the main.js
