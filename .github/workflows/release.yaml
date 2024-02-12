@@ -26,10 +26,9 @@ jobs:
 
       - name: Update manifest.json
         env:
-          VERSION: ${{ github.ref }}
+          VERSION: ${{ github.ref_name }}
         run: |
           rm build/manifest.json
-          cat "s/#VERSION#/$VERSION/g" 
           sed -e "s/#VERSION#/$VERSION/g" public/manifest.json > build/manifest.json
       # Create the release on github
       - name: Create Release
