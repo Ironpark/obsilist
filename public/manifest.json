@@ -1,10 +1,10 @@
 {
-	"id": "obsidian-svelte-plugin",
-	"name": "Obsidian Svelte Plugin",
+	"id": "obsilist-plugin",
+	"name": "Obsidian Vault List Plugin With Tab",
 	"description": "A powerful Obsidian plugin template that provides a solid foundation for kickstarting your Svelte projects with Obsidian.",
-	"author": "Emilio Toledo",
-	"authorUrl": "https://github.com/emilio-toledo",
-	"version": "1.0.0",
+	"author": "ironpark",
+	"authorUrl": "https://github.com/ironpark",
+	"version": "#VERSION#",
 	"minAppVersion": "0.15.0",
 	"isDesktopOnly": false
 }
