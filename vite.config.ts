@@ -2,7 +2,7 @@ import { pathToFileURL } from "url";
 import { svelte, vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import builtins from "builtin-modules";
 import UnoCSS from "unocss/vite";
-import { PluginOption, defineConfig } from "vite";
+import {type PluginOption, defineConfig } from "vite";
 
 const setOutDir = (mode: string) => {
 	switch (mode) {

@@ -8,7 +8,7 @@ function tokenization(s: string): Token[] {
     const patterns: RegExp[] = [
         /\".*?\"/g, // Double-quoted strings
         /\[\s*(\".*?\"|\d+)(\s*,\s*(\".*?\"|\d+))*\s*\]/g, // Arrays of strings and/or numbers
-        /\bin\b|\band\b|\bor\b|<|=|>/g, // Operators
+        /\bin\b|\band\b|\bor\b|\bnot\b|<|=|>/g, // Operators
         /\d+/g, // Numbers outside of arrays
         /[a-zA-Z_][a-zA-Z0-9_]*/g, // Identifiers (variable names)
         /[(),]/g // Parentheses and commas
@@ -24,7 +24,7 @@ function tokenization(s: string): Token[] {
         if (['(', ')'].includes(x)) {
             return { type: "bracket", value: x };
         }
-        if (['and', 'or'].includes(x)) {
+        if (['and', 'or', 'not'].includes(x)) {
             return { type: "logic", value: x };
         }
         if (['<', '>', '=', 'in'].includes(x)) {
@@ -65,7 +65,7 @@ function queryFilter(items: Item[], query_str: string): any[] {
                 return JSON.stringify(value) + (token.close === true ? ")" : "");
             } else if (type === "logic") {
                 //@ts-ignore
-                return { "or": "||", "and": "&&" }[value];
+                return { "or": "||", "and": "&&","not":"!" }[value];
             } else if (type === "cmp" && value === "=") {
                 return "==";
             } else if (type === "cmp" && value === "in") {

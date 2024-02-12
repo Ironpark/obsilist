@@ -29,6 +29,7 @@ export default class ObsidianNoteConnections extends Plugin {
 			let comp = new Component({
 				target: content,
 				props: {
+					app:this.app,
 					metadata:this.app.metadataCache,
 					vault:this.app.vault,
 					source,
