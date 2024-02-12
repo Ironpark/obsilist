@@ -23,7 +23,13 @@ jobs:
         run: |
           npm install
           npm run build
-          sed -i.bak "s/#VERSION#/$VERSION/g" /build/manifest.json
+
+      - name: Update manifest.json
+        env:
+          VERSION: ${{ github.ref }}
+        run: |
+          rm build/manifest.json
+          sed -e "s/#VERSION#/$VERSION/g" public/manifest.json > build/manifest.json
       # Create the release on github
       - name: Create Release
         id: create_release
