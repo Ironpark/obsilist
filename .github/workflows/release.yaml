@@ -28,6 +28,7 @@ jobs:
         env:
           VERSION: ${{ github.ref_name }}
         run: |
+          rm build/manifest.json
           sed -e "s/#VERSION#/$VERSION/g" manifest.json > build/manifest.json
 
       # Create the release on github
